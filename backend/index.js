@@ -20,9 +20,9 @@ app.use(cors({origin: process.env.CLIENT_DOMAIN,
   credentials: true,}))
 app.use(cookieParser())
 app.use("/api/auth", authRoute)
-app.use("/api/resume", verifyToken, resumeRoute)
-app.use("/api/user", verifyToken, userRoute)
-app.use("/api/premium",verifyToken,premiumRoute)
+app.use("/api/resume", resumeRoute)
+app.use("/api/user", userRoute)
+app.use("/api/premium",premiumRoute)
 
 app.use(errorHandler)
 
