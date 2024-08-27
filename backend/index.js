@@ -12,8 +12,6 @@ const { errorHandler } = require('./middlewares/error')
 const verifyToken = require('./middlewares/verifyToken')
 
 
-
-
 dotenv.config()
 app.use(express.json())
 app.use(cors({origin: process.env.CLIENT_DOMAIN, 
