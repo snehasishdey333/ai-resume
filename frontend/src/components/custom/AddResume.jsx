@@ -10,9 +10,10 @@ import {
 import { useContext, useState } from "react"
 import { Button } from "../ui/button"
 import { Input } from "@/components/ui/input"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { createResume, getResumes } from "@/utils/apiCalls"
 import { UserInfoContext } from "@/context/UserInfoContext"
+
 
 
 
@@ -24,7 +25,7 @@ const AddResume = () => {
     const [settingsOpen,setSettingsOpen]=useState(false)
     const [title, setTitle] = useState("")
     const [loading, setLoading] = useState(false)
-    const navigation=useNavigate()
+    
    
     
     
