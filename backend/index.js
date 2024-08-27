@@ -14,7 +14,7 @@ const verifyToken = require('./middlewares/verifyToken')
 
 dotenv.config()
 app.use(express.json())
-app.use(cors({origin: process.env.CLIENT_DOMAIN, 
+app.use(cors({origin: "https://ai-resume-maker.netlify.app", 
   credentials: true,}))
 app.use(cookieParser())
 app.use("/api/auth", authRoute)
