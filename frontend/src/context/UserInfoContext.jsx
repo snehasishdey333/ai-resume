@@ -18,25 +18,18 @@ export function UserContextProvider({children}){
       try{
         // const res=await axios.get(import.meta.env.VITE_BACKEND_URL+"/api/auth/refetch")
         setUser({
-email
-: 
-"ratna@gmail.com",
-fullName
-: 
-"Ratna Das",
+
+_id:
+"66ccbf17028c54a908a4e014",
+fullName:
+"Sourav Dey",
+email:
+"sourav@gmail.com",
+
 resumes
-: 
-[],
-subscribed
-: 
-true,
-updatedAt
-: 
-"2024-08-28T17:32:05.022Z"
-,
-_id
-: 
-"66cf5f14b8d37fea70e46583"})
+:[],
+subscribed:
+true})
 
       }
       catch(err){
