@@ -10,7 +10,7 @@ const Header = () => {
     
     const { user } = useContext(UserInfoContext)
     const pathname = useLocation().pathname
-    console.log(user)
+    // console.log(user)
     
     return (
       user ? 

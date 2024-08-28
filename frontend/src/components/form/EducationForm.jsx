@@ -23,7 +23,7 @@ const EducationForm = ({ setEnableNext }) => {
   const {template,setTemplate}=useContext(TemplateInfoContext)
   const [educationList, setEducationList] = useState([eduFields])
   useEffect(()=>{
-        info?.education.length>0 && setEducationList(info?.education)
+        info?.education?.length>0 && setEducationList(info?.education)
     },[])
   const handleInputChange = (event, index) => {
     setEnableNext(false)
@@ -56,7 +56,7 @@ const EducationForm = ({ setEnableNext }) => {
             const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/resume/update/" + resumeId, {
               education: info?.education,
               template:template
-            },{withCredentials:true})
+            })
             console.log(response.data)
             setEnableNext(true)
         }

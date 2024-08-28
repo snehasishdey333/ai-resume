@@ -18,7 +18,7 @@ const DashboardPage =  () => {
       fetchResumes(setResumes,userId)
     }
     
-  }, [user,userId,resumes])
+  }, [user,userId])
  
   // useEffect(() => {
   //   fetchResumes(setResumes,userId)

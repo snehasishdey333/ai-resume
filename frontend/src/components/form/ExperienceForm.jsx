@@ -25,7 +25,7 @@ const ExperienceForm = ({ setEnableNext }) => {
    
   const [experienceList, setExperienceList] = useState([expFields])
   useEffect(()=>{
-        info?.experience.length>0 && setExperienceList(info?.experience)
+        info?.experience?.length>0 && setExperienceList(info?.experience)
         console.log(info?.experience)
     },[])
   const handleInputChange = (event, index) => {
@@ -65,7 +65,7 @@ const ExperienceForm = ({ setEnableNext }) => {
             const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/resume/update/" + resumeId, {
               experience: info?.experience,
               template:template
-            },{withCredentials:true})
+            })
             console.log(response.data)
             setEnableNext(true)
         }

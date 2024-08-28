@@ -44,7 +44,7 @@ const SummaryForm = ({ setEnableNext }) => {
             const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/resume/update/" + resumeId, {
               summary: info?.summary,
               template:template
-            },{withCredentials:true})
+            })
             console.log(response.data)
             setEnableNext(true)
         }
