@@ -75,7 +75,8 @@ export const handleLogin = async (values,navigate) => {
 
 export const handleLogout = async (navigate) => {
     try {
-      const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/auth/logout")
+      // const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/auth/logout")
+       localStorage.removeItem('user_data');
       navigate("/auth/login")
     } catch (error) {
       console.log(error)
