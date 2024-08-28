@@ -65,6 +65,7 @@ export const handleLogin = async (values,navigate) => {
      })
       // console.log(response.data)
       console.log(response.data)
+      localStorage.setItem('user_data', JSON.stringify(response.data));
       navigate("/dashboard")
     } catch (error) {
       console.log(error)
