@@ -1,10 +1,19 @@
 import Footer from "@/components/custom/Footer"
 import Header from "@/components/custom/Header"
 import { Button } from "@/components/ui/button"
-import { Link } from "react-router-dom"
+import { UserInfoContext } from "@/context/UserInfoContext"
+import { useContext } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
 
 const HomePage = () => {
+  const { user } = useContext(UserInfoContext)
+  const navigate = useNavigate()
+  
+  if (user) {
+    navigate("/dashboard")
+  }
+
   return (
     <main>
       

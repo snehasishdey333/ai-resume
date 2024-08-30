@@ -2,12 +2,16 @@ import { Button } from "@/components/ui/button"
 import { registrationSchema } from "@/schemas/schema";
 import { handleRegister } from "@/utils/apiCalls";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
+  const [error,setError]=useState()
   
   
   return (
@@ -24,7 +28,7 @@ const navigate = useNavigate();
       <Formik
       initialValues={{ name: '', email: '',password:'' }}
       validationSchema={registrationSchema}
-      onSubmit={(values) => handleRegister(values, navigate)}
+      onSubmit={(values) => handleRegister(values, navigate,setLoading,setError)}
     >
       {() => (
           <Form className="w-full md:w-[400px] lg:w-[450px] flex flex-col items-center justify-center space-y-3">
@@ -49,7 +53,9 @@ const navigate = useNavigate();
               
               
               {/* <button type="submit">Login</button> */}
-              <Button type="submit" size="lg">Register</Button>
+            
+            <Button type="submit" size="lg">{loading ? <Loader2 className="animate-spin" /> : "Register"}</Button>
+            <p className="error-message">{error}</p>
           </Form>
           )}
     </Formik>

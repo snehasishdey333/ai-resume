@@ -1,11 +1,14 @@
 import axios from "axios"
 
-export const fetchResumes = async (setResumes,userId) => {
+export const fetchResumes = async (setResumes, userId, setLoading) => {
+  setLoading(true)
   try {
     const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/all/"+userId)
     setResumes(response.data)
+    setLoading(false)
   }
   catch (error) {
+    setLoading(true)
     console.log(error)
   }
 }
@@ -26,6 +29,8 @@ export const createResume = async(userId,title) => {
           userId: userId,
           title:title
         })
+       
+      return response.data
         // console.log(response.data)
     }
     catch (error) {
@@ -43,32 +48,46 @@ export const getResumeData = async (resumeId,setInfo) => {
       }
 }
     
-export const handleRegister = async (values,navigate) => {
+export const handleRegister = async (values, navigate,setLoading,setError) => {
+  setLoading(true)
+  setError()
     try {
       const response = await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/auth/register", {
         fullName: values.name,
         email: values.email,
         password:values.password
       })
-      navigate("/auth/login")
+      setLoading(false)
+      setError()
+      localStorage.setItem('user_data', JSON.stringify(response.data));
+      navigate("/dashboard")
     } catch (error) {
+      setError(error.response.data.error)
+      setLoading(false)
       console.log(error)
     }
 };
   
 
-export const handleLogin = async (values,navigate) => {
+export const handleLogin = async (values, navigate, setLoading, setError) => {
+  setLoading(true)
+  setError()
     try {
      const response = await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/auth/login", {
         email: values.email,
         password:values.password
      })
       // console.log(response.data)
-      console.log(response.data)
+      // console.log(response.data)
+      setLoading(false)
+      setError()
       localStorage.setItem('user_data', JSON.stringify(response.data));
       navigate("/dashboard")
     } catch (error) {
+      setError(error.response.data.error)
+      setLoading(false)
       console.log(error)
+      
     }
 };
 

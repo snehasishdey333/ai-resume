@@ -1,12 +1,23 @@
 import { Button } from "@/components/ui/button"
+import { UserInfoContext } from "@/context/UserInfoContext"
 import { loginSchema } from "@/schemas/schema"
 import { handleLogin } from "@/utils/apiCalls"
 import { ErrorMessage, Field, Form, Formik } from "formik"
+import { Loader2 } from "lucide-react"
+import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
 
 const LoginPage = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState()
+  const { user } = useContext(UserInfoContext)
+  console.log(user)
+  if (user) {
+    
+    navigate("/dashboard")
+  }
     
   return (
     <main className="p-6 md:p-0 w-[100vw] h-[100vh] flex items-center justify-center flex-col">
@@ -21,7 +32,7 @@ const LoginPage = () => {
           <Formik
       initialValues={{ email: '',password:'' }}
       validationSchema={loginSchema}
-      onSubmit={(values) => handleLogin(values, navigate)}
+      onSubmit={(values) => handleLogin(values, navigate,setLoading,setError)}
     >
       {() => (
           <Form className="w-full md:w-[400px] lg:w-[450px] flex flex-col items-center justify-center space-y-3">
@@ -41,7 +52,8 @@ const LoginPage = () => {
               
               
               {/* <button type="submit">Login</button> */}
-              <Button type="submit" size="lg">Login</Button>
+            <Button type="submit" size="lg">{loading ? <Loader2 className="animate-spin"/> : "Login"}</Button>
+            <p className="error-message">{error}</p>
           </Form>
           )}
     </Formik>
