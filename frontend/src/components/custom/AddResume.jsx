@@ -34,9 +34,10 @@ const AddResume = () => {
       const totalResumes = await getResumes(userId)
       // console.log("this is total resumes",totalResumes)
       if (totalResumes?.length < 5 || user?.subscribed) {
-        const data = await createResume(userId, title);
+        const response = await createResume(userId, title);
         setTitle("")
         setOpen(false)
+        window.location.reload();
       }
       else {
         setOpen(false)

@@ -17,6 +17,7 @@ export function UserContextProvider({children}){
     const getUser=async()=>{
       try{
         // const res=await axios.get(import.meta.env.VITE_BACKEND_URL+"/api/auth/refetch")
+<<<<<<< HEAD
         setUser({
 
 _id:
@@ -30,6 +31,9 @@ resumes
 :[],
 subscribed:
 true})
+=======
+        setUser(JSON.parse(localStorage.getItem("user_data")))
+>>>>>>> master
 
       }
       catch(err){

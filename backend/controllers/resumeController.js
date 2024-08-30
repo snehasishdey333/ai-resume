@@ -10,11 +10,12 @@ const createResumeController = async (req, res, next) => {
        const newResume=new Resume(req.body)
         const savedResume = await newResume.save()
         
-        await User.findByIdAndUpdate(req.body.userId, {
+        const updatedUserResumes=await User.findByIdAndUpdate(req.body.userId, {
             $push: { resumes: savedResume._id }
-        });
-
-       res.status(201).json(savedResume)
+        }).populate("resumes");
+        
+        
+       res.status(201).json(updatedUserResumes.resumes)
     }
     catch (error) {
         next(error)
