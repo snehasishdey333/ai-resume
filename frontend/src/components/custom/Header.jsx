@@ -20,7 +20,7 @@ const Header = () => {
               <h1 className="text-xl font-bold text-[#510AC9] ">ResumeAI</h1>
           </Link>
           
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 md:space-x-4">
                   {!user?.subscribed ? <Button size="sm">
                       <Link to="/premium">
                           <StarOffIcon size={12}/>
@@ -32,7 +32,7 @@ const Header = () => {
                       </div>
                     
                   }
-                  <p className="text-primary font-semibold text-[12px] md:text-base">Hi, {user?.fullName}</p>
+                  <p className="text-primary font-semibold text-sm md:text-base">Hi, {user?.fullName}</p>
                   {pathname == "/dashboard" ?
                       <Button variant="outline">
                       <Link to="/account">Account</Link>
