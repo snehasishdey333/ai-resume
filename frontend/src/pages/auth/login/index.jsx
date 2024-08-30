@@ -14,10 +14,7 @@ const LoginPage = () => {
   const [error, setError] = useState()
   const { user } = useContext(UserInfoContext)
   console.log(user)
-  if (user) {
-    
-    navigate("/dashboard")
-  }
+  
     
   return (
     <main className="p-6 md:p-0 w-[100vw] h-[100vh] flex items-center justify-center flex-col">
