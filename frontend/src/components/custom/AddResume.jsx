@@ -37,7 +37,7 @@ const AddResume = () => {
         const response = await createResume(userId, title);
         setTitle("")
         setOpen(false)
-        window.location.reload();
+        
       }
       else {
         setOpen(false)
