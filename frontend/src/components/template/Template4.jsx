@@ -12,7 +12,7 @@ import PersonalSection from "../preview/PersonalSection"
 const Template4 = ({info}) => {
     
   return (
-    <div className="border-t-[20px] px-8 pt-8 pb-4 space-y-4 bg-white h-full">
+    <div className="border-t-[20px] px-8 pt-8 pb-4 space-y-4 bg-white h-full font-serif">
           {/* personal */}
       <PersonalSection info={info} />
       {/* experience */}
