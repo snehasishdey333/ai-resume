@@ -17,6 +17,18 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        font1: ["Roboto", "serif"],
+        font2: ["Open Sans", "serif"],
+        font3: ["Lato", "serif"],
+        font4: ["Merriweather", "serif"],
+        font5: ["Montserrat", "serif"],
+        font6: ["Poppins", "serif"],
+        font7: ["Source Code Pro", "serif"],
+        font8: ["Courier Prime", "serif"],
+        font9: ["Serif", "serif"],
+        font10: ["Sans", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
