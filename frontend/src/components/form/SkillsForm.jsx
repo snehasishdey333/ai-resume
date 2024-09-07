@@ -49,7 +49,7 @@ const SkillsForm = ({ setEnableNext }) => {
             const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/resume/update/" + resumeId, {
               skills: info?.skills,
               template:template
-            })
+            },{ withCredentials: true })
             console.log(response.data)
             setEnableNext(true)
         }

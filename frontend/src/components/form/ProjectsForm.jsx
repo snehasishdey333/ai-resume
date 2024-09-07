@@ -61,7 +61,7 @@ const ProjectsForm = ({ setEnableNext }) => {
             const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/resume/update/" + resumeId, {
               projects: info?.projects,
               template:template
-            })
+            },{ withCredentials: true })
             console.log(response.data)
             setEnableNext(true)
         }

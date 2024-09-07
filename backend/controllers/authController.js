@@ -15,8 +15,10 @@ const registerController = async (req, res, next) => {
        const salt=await bcrypt.genSalt(10)
        const hashedPassword=await bcrypt.hashSync(password,salt)
        const newUser=new User({...req.body,password:hashedPassword})
-       const savedUser=await newUser.save()
-       res.status(201).json(savedUser)
+        const savedUser = await newUser.save()
+         const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRE})
+        res.cookie("token",token,{secure:true,httpOnly:true, sameSite:'strict'}).status(200).json(savedUser)
+       
        
     }
     catch(error){
@@ -41,8 +43,8 @@ const loginController=async (req,res,next)=>{
 
         const {password,...data}=user._doc
         const token=jwt.sign({_id:user._id},process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRE})
-        res.cookie("token",token,{secure:true,sameSite:'none',httpOnly:false}).status(200).json(data)
-
+        res.cookie("token",token,{secure:true,httpOnly:true, sameSite:'strict'}).status(200).json(data)
+    //    sameSite:'none',httpOnly:false
     }
     catch(error){
         next(error)
@@ -51,7 +53,7 @@ const loginController=async (req,res,next)=>{
 
 const logoutController=async(req,res,next)=>{
     try{
-        res.clearCookie("token",{sameSite:"none",secure:true}).status(200).json("user logged out successfully!")
+        res.clearCookie("token").status(200).json("user logged out successfully!")
 
     }
     catch(error){

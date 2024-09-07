@@ -56,7 +56,7 @@ const EducationForm = ({ setEnableNext }) => {
             const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/resume/update/" + resumeId, {
               education: info?.education,
               template:template
-            })
+            },{ withCredentials: true })
             console.log(response.data)
             setEnableNext(true)
         }

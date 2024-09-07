@@ -39,7 +39,7 @@ const PersonalDetailsForm = ({ setEnableNext }) => {
                 phone: info?.phone, 
                 email: info?.email,
                 template:template
-            })
+            },{ withCredentials: true })
             console.log(response.data)
             setEnableNext(true)
         }

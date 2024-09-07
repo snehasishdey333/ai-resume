@@ -49,7 +49,7 @@ const AchievementForm = ({ setEnableNext }) => {
             const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/resume/update/" + resumeId, {
               achievements: info?.achievements,
               template:template
-            })
+            },{ withCredentials: true })
             console.log(response.data)
             setEnableNext(true)
         }

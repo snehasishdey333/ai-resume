@@ -3,7 +3,7 @@ import axios from "axios"
 export const fetchResumes = async (setResumes, userId, setLoading) => {
   setLoading(true)
   try {
-    const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/all/"+userId)
+    const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/all/"+userId,{ withCredentials: true })
     setResumes(response.data)
     setLoading(false)
   }
@@ -15,7 +15,7 @@ export const fetchResumes = async (setResumes, userId, setLoading) => {
   
 export const getResumes = async(userId) => {
     try {
-      const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/all/" + userId)
+      const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/all/" + userId,{ withCredentials: true })
         return response.data
     }
     catch (error) {
@@ -28,7 +28,7 @@ export const createResume = async(userId,title) => {
         const response = await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/resume/create", {
           userId: userId,
           title:title
-        })
+        },{ withCredentials: true })
        
       return response.data
         // console.log(response.data)
@@ -40,7 +40,7 @@ export const createResume = async(userId,title) => {
 
 export const getResumeData = async (resumeId,setInfo) => {
       try {
-        const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/user/" + resumeId)
+        const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/user/" + resumeId,{ withCredentials: true })
         setInfo(response.data)
       }
       catch (error) {
@@ -56,10 +56,10 @@ export const handleRegister = async (values, navigate,setLoading,setError) => {
         fullName: values.name,
         email: values.email,
         password:values.password
-      })
+      },{withCredentials:true})
       setLoading(false)
       setError()
-      localStorage.setItem('user_data', JSON.stringify(response.data));
+      // localStorage.setItem('user_data', JSON.stringify(response.data));
       navigate("/dashboard")
     } catch (error) {
       setError(error.response.data.error)
@@ -76,12 +76,12 @@ export const handleLogin = async (values, navigate, setLoading, setError) => {
      const response = await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/auth/login", {
         email: values.email,
         password:values.password
-     })
+     },{ withCredentials: true })
       // console.log(response.data)
       // console.log(response.data)
       setLoading(false)
       setError()
-      localStorage.setItem('user_data', JSON.stringify(response.data));
+      // localStorage.setItem('user_data', JSON.stringify(response.data));
       navigate("/dashboard")
     } catch (error) {
       setError(error.response.data.error)
@@ -94,8 +94,8 @@ export const handleLogin = async (values, navigate, setLoading, setError) => {
 
 export const handleLogout = async (navigate) => {
     try {
-      // const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/auth/logout")
-       localStorage.removeItem('user_data');
+      const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/auth/logout",{ withCredentials: true })
+      //  localStorage.removeItem('user_data');
       navigate("/auth/login")
     } catch (error) {
       console.log(error)
@@ -107,7 +107,7 @@ export const handleUpdateUser = async (userId, values,navigate) => {
     try {
      const response = await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/user/update/"+userId, {
         password:values.password
-     })
+     },{ withCredentials: true })
       
       navigate("/dashboard")
     } catch (error) {
@@ -144,9 +144,9 @@ export const handleUpdateUser = async (userId, values,navigate) => {
       
       
       const result = await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/premium",{
-          amount: 100,
+          amount: 900,
           userId:userId
-      });
+      },{ withCredentials: true });
       const order=result?.data
 
         if (!result) {
@@ -173,7 +173,7 @@ export const handleUpdateUser = async (userId, values,navigate) => {
                     razorpaySignature: response.razorpay_signature,
                 };
 
-                const result = await axios.post(import.meta.env.VITE_BACKEND_URL +"/api/premium/verify-payment", data);
+                const result = await axios.post(import.meta.env.VITE_BACKEND_URL +"/api/premium/verify-payment", data,{ withCredentials: true });
                 window.location=result.data.url
                 
             },

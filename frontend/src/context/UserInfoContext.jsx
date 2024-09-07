@@ -16,8 +16,9 @@ export function UserContextProvider({children}){
 
     const getUser=async()=>{
       try{
-        // const res=await axios.get(import.meta.env.VITE_BACKEND_URL+"/api/auth/refetch")
-        setUser(JSON.parse(localStorage.getItem("user_data")))
+        const res = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/auth/refetch", { withCredentials: true })
+        setUser(res?.data)
+        // setUser(JSON.parse(localStorage.getItem("user_data")))
 
 
       }
