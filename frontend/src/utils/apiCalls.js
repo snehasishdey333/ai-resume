@@ -24,15 +24,13 @@ export const getResumes = async(userId) => {
     }
 }
 
-export const createResume = async(setResumes,userId,title) => {
+export const createResume = async(userId,title) => {
     try {
         const response = await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/resume/create", {
           userId: userId,
           title:title
         }, { withCredentials: true })
-      // console.log("hi")
-      // console.log(response.data)
-       setResumes((prevResumes) => [...prevResumes, response.data])
+      
       return response.data
         // console.log(response.data)
     }
