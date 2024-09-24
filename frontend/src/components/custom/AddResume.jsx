@@ -16,7 +16,7 @@ import { UserInfoContext } from "@/context/UserInfoContext"
 
 
 
-const AddResume = ({setResumes}) => {
+const AddResume = (setResumes) => {
 
     const { user } = useContext(UserInfoContext)
     const userId = user?._id
