@@ -3,7 +3,8 @@ import axios from "axios"
 export const fetchResumes = async (setResumes, userId, setLoading) => {
   setLoading(true)
   try {
-    const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/all/"+userId,{ withCredentials: true })
+    const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/resume/all/" + userId, { withCredentials: true })
+    console.log(response.data.length)
     setResumes(response.data)
     setLoading(false)
   }

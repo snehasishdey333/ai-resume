@@ -15,10 +15,6 @@ const DashboardPage =  () => {
   const userId = user?._id
 
   
-    
-   
-    
-  
   
   
   useEffect(() => {
@@ -27,7 +23,7 @@ const DashboardPage =  () => {
       fetchResumes(setResumes,userId,setLoading)
     }
     
-  }, [user,userId])
+  }, [user,userId,resumes])
  
  
   

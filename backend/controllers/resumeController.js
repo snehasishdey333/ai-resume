@@ -8,7 +8,7 @@ const createResumeController = async (req, res, next) => {
     
     try {
        const newResume=new Resume(req.body)
-        const savedResume = await newResume.save()
+       const savedResume = await newResume.save()
         
         const updatedUserResumes=await User.findByIdAndUpdate(req.body.userId, {
             $push: { resumes: savedResume._id }
