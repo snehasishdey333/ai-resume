@@ -34,7 +34,7 @@ const DashboardPage =  () => {
       <p className="font-semibold text-[12px] md:text-[16px] text-sm">Start crafting your personalized resume effortlessly with our intuitive tools. Tailor your experience, skills, and achievements to stand out to potential employers.</p>
       <div className="min-h-[50vh] flex items-center justify-center">
         {loading ? <Loader2 className="animate-spin"/> : <div className="mt-4 grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 p-2 md:p-4">
-           <AddResume/>
+            <AddResume setResumes={setResumes} />
         {resumes?.reverse().map((props,index) => (
           <ResumeCard key={index} props={props}/>
         ))}

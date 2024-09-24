@@ -16,7 +16,7 @@ import { UserInfoContext } from "@/context/UserInfoContext"
 
 
 
-const AddResume = () => {
+const AddResume = ({setResumes}) => {
 
     const { user } = useContext(UserInfoContext)
     const userId = user?._id
@@ -34,7 +34,7 @@ const AddResume = () => {
       const totalResumes = await getResumes(userId)
       // console.log("this is total resumes",totalResumes)
       if (totalResumes?.length < 5 || user?.subscribed) {
-        const response = await createResume(userId, title);
+        const response = await createResume(userId, title,setResumes);
         setTitle("")
         setOpen(false)
         
