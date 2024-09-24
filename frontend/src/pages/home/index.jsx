@@ -34,7 +34,7 @@ const HomePage = () => {
       </div>
       <div className="flex items-center justify-center space-y-3 mt-16">
           <p className="text-3xl font-bold text-left w-[60%]">For just $9.99 explore more options from us, create unlimited resumes but premium templates.</p>
-        <Button>Get Premium</Button>
+        <Button><Link to="/auth/login">Get Premium</Link></Button>
       </div>
       
       {/* <div className="absolute top-[30%] left-[50%] z-[-10]">
